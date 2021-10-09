@@ -1,8 +1,14 @@
 require_relative './person'
 
 class Student < Person
-  def initialize(age, name, classroom: nil)
+  def initialize(age, name, permission, classroom: nil)
     super(age, name, parent_permission: true)
+    @parent_permission = case permission
+                         when 'Y'
+                           true
+                         else
+                           false
+                         end
     @classroom = classroom
   end
 
