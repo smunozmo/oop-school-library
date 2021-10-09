@@ -7,6 +7,5 @@ class Rental
     person.rentals << self
   end
 
-  attr_reader :book
-  attr_accessor :date
+  attr_accessor :date, :book, :person
 end
