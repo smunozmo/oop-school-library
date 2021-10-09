@@ -6,12 +6,6 @@ class Student < Person
     @parent_permission = case permission
                          when 'Y'
                            true
-                         when 'y'
-                           true
-                         when 'N'
-                           false
-                         when 'n'
-                           false
                          else
                            false
                          end
