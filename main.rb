@@ -89,17 +89,17 @@ class App
   end
 
   def create_rental
-    puts "\nSelect a book from the following list by number:".yellow
-    print "\n"
+    puts "\nSelect a book from the following list by number: \n".yellow
     @books.each_with_index do |_e, idx|
-      puts "#{idx}) ".yellow + "Title: '#{@books[idx].title}', Author #{@books[idx].author}".green
+      print "#{idx}) ".yellow
+      print "Title: '#{@books[idx].title}', Author #{@books[idx].author}\n".green
     end
     book = gets.chomp.to_i
     book = @books[book]
-    puts "\nSelect a person from the following list by number (not ID): ".yellow
-    print "\n"
-    @people.each_with_index do |_e, idx|
-      puts "#{idx}) ".yellow + "[#{@people[idx].class}] Name:'#{@people[idx].name}', ID:#{@people[idx].id}, Age:#{@people[idx].age}".green
+    puts "\nSelect a person from the following list by number (not ID): \n".yellow
+    @people.each_with_index do |_e, ix|
+      print "#{ix}) ".yellow
+      print "[#{@people[ix].class}] Name:'#{@people[ix].name}', ID:#{@people[ix].id}, Age:#{@people[ix].age} \n".green
     end
     person = gets.chomp.to_i
     person = @people[person]
@@ -113,13 +113,13 @@ class App
   def display_rentals_by_id
     print "\nID of person: ".yellow
     id = gets.chomp.to_i
-    @people.each_with_index do |e, idx|
+    @people.each_with_index do |_e, idx|
       next unless id == @people[idx].id
 
       person = @people[idx].rentals
       puts "\nRentals:".yellow
       puts "\n"
-      person.each_with_index do |e, index|
+      person.each_with_index do |_e, index|
         puts "Date: #{person[index].date}, Book: '#{person[index].book.title}' by #{person[index].book.author}".green
       end
     end
