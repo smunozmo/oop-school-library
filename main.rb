@@ -29,15 +29,18 @@ class App
 
   def list_books
     @books.each_with_index do |_e, idx|
-      puts "\nTitle: '#{@books[idx].title}', Author #{@books[idx].author}".green
+      print "\nTitle: '#{@books[idx].title}', Author #{@books[idx].author}".green
     end
+    print "\n"
     run
   end
 
   def list_people
     @people.each_with_index do |_e, idx|
-      puts "\n[#{@people[idx].class}] ".yellow + "Name: '#{@people[idx].name}', ID: #{@people[idx].id}, Age: #{@people[idx].age}".green
+      print "\n[#{@people[idx].class}] ".yellow
+      print "Name: '#{@people[idx].name}', ID: #{@people[idx].id}, Age: #{@people[idx].age}".green
     end
+    print "\n"
     run
   end
 
@@ -63,6 +66,18 @@ class App
     print "\nSuccess!\n".green
   end
 
+  def create_person
+    print "\nDo you want to create a student (1) or a  teacher (2)? [Input the number]: ".yellow
+    person = gets.chomp
+    case person
+    when '1'
+      create_student
+    when '2'
+      create_teacher
+    end
+    run
+  end
+
   def create_book
     print "\nTitle: ".yellow
     title = gets.chomp
@@ -73,14 +88,40 @@ class App
     run
   end
 
-  def create_person
-    print "\nDo you want to create a student (1) or a  teacher (2)? [Input the number]: ".yellow
-    person = gets.chomp
-    case person
-    when '1'
-      create_student
-    when '2'
-      create_teacher
+  def create_rental
+    puts "\nSelect a book from the following list by number:".yellow
+    print "\n"
+    @books.each_with_index do |_e, idx|
+      puts "#{idx}) ".yellow + "Title: '#{@books[idx].title}', Author #{@books[idx].author}".green
+    end
+    book = gets.chomp.to_i
+    book = @books[book]
+    puts "\nSelect a person from the following list by number (not ID): ".yellow
+    print "\n"
+    @people.each_with_index do |_e, idx|
+      puts "#{idx}) ".yellow + "[#{@people[idx].class}] Name:'#{@people[idx].name}', ID:#{@people[idx].id}, Age:#{@people[idx].age}".green
+    end
+    person = gets.chomp.to_i
+    person = @people[person]
+    print "\nDate: ".yellow
+    date = gets.chomp
+    Rental.new(date, book, person)
+    print "\nSuccess!\n".green
+    run
+  end
+
+  def display_rentals_by_id
+    print "\nID of person: ".yellow
+    id = gets.chomp.to_i
+    @people.each_with_index do |e, idx|
+      next unless id == @people[idx].id
+
+      person = @people[idx].rentals
+      puts "\nRentals:".yellow
+      puts "\n"
+      person.each_with_index do |e, index|
+        puts "Date: #{person[index].date}, Book: '#{person[index].book.title}' by #{person[index].book.author}".green
+      end
     end
     run
   end
