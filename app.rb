@@ -30,6 +30,10 @@ class App
     @creators.book(@books)
   end
 
+  def create_person
+    @creators.people(@people)
+  end
+
   def list_people
     if @people.length.zero?
       puts "\nThere are no people created!".green
@@ -63,17 +67,16 @@ class App
     print "\nSuccess!\n".green
   end
 
-  def create_person
-    print "\nDo you want to create a student (1) or a  teacher (2)? [Input the number]: ".yellow
-    person = gets.chomp
-    case person
-    when '1'
-      create_student
-    when '2'
-      create_teacher
-    end
-    run
-  end
+  # def create_person
+  #   print "\nDo you want to create a student (1) or a  teacher (2)? [Input the number]: ".yellow
+  #   person = gets.chomp
+  #   case person
+  #   when '1'
+  #     create_student
+  #   when '2'
+  #     create_teacher
+  #   end
+  # end
 
   # def create_book
   #   print "\nTitle: ".yellow
@@ -159,5 +162,38 @@ class Creators
     author = gets.chomp
     books << Book.new(title, author)
     print "\nSuccess!\n".green
+  end
+
+  def create_student(people)
+    print "\nAge: ".yellow
+    age = gets.chomp.to_i
+    print 'Name: '.yellow
+    name = gets.chomp
+    print 'Has parent permission? [Y/N]: '.yellow
+    parent_permission = gets.chomp
+    people << Student.new(age, name, parent_permission)
+    print "\nSuccess!\n".green
+  end
+
+  def create_teacher(people)
+    print "\nAge: ".yellow
+    age = gets.chomp.to_i
+    print 'Name: '.yellow
+    name = gets.chomp
+    print 'Specialization: '.yellow
+    specialization = gets.chomp
+    people << Teacher.new(age, name, specialization)
+    print "\nSuccess!\n".green
+  end
+
+  def people(people)
+    print "\nDo you want to create a student (1) or a  teacher (2)? [Input the number]: ".yellow
+    person = gets.chomp
+    case person
+    when '1'
+      create_student(people)
+    when '2'
+      create_teacher(people)
+    end
   end
 end
