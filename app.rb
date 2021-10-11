@@ -5,27 +5,29 @@ require_relative './book'
 require_relative './rental'
 
 class App
-  attr_accessor :books
-
   def initialize
-    @books = []
     @people = []
     @rentals = []
+    @books = []
+    @lists = Lists.new
   end
 
+  # def list_books
+  #   if @books.length.zero?
+  #     puts "\nThere are no books created!".green
+  #   else
+  #     @books.each do |e|
+  #       puts "Title: \"#{e.title}\", Author #{e.author}".green
+  #     end
+  # end
+
   def list_books
-    if @books.length.zero?
-      puts 'There are no books created!'.green
-    else
-      @books.each do |e|
-        puts "Title: \"#{e.title}\", Author #{e.author}".green
-      end
-    end
+    @lists.show_list_books(@books)
   end
 
   def list_people
     if @people.length.zero?
-      puts 'There are no people created!'
+      puts "\nThere are no people created!".green
     else
       @people.each do |e|
         print "[#{e.class}] ".yellow
@@ -68,15 +70,15 @@ class App
     run
   end
 
-  def create_book
-    print "\nTitle: ".yellow
-    title = gets.chomp
-    print 'Author: '.yellow
-    author = gets.chomp
-    @books << Book.new(title, author)
-    print "\nSuccess!\n".green
-    run
-  end
+  # def create_book
+  #   print "\nTitle: ".yellow
+  #   title = gets.chomp
+  #   print 'Author: '.yellow
+  #   author = gets.chomp
+  #   @books << Book.new(title, author)
+  #   print "\nSuccess!\n".green
+  #   run
+  # end
 
   def create_rental
     puts "\nSelect a book from the following list by number: \n".yellow
@@ -129,5 +131,29 @@ class App
     print 'this '.pink
     sleep(speed)
     puts 'app!'.pink
+  end
+end
+
+class Lists
+  def show_list_books(books)
+    if books.length.zero?
+      puts "\nThere are no books created!".green
+    else
+      @books.each do |e|
+        puts "Title: \"#{e.title}\", Author #{e.author}".green
+      end
+    end
+  end
+end
+
+class Creator
+    def create_book
+    print "\nTitle: ".yellow
+    title = gets.chomp
+    print 'Author: '.yellow
+    author = gets.chomp
+    @books << Book.new(title, author)
+    print "\nSuccess!\n".green
+    run
   end
 end

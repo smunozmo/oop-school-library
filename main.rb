@@ -5,25 +5,19 @@ puts 'Welcome to School Library App!'.yellow
 def main
   app = App.new
 
-  p app
-
-  app.books.push("Libro")
-
-  p app
-  
   loop do
     puts
-    puts "Please choose an option by entering a number:".yellow
+    puts 'Please choose an option by entering a number:'.yellow
     puts '1 - List all books'.green
     puts '2 - List all people'.green
     puts '3 - Create a person'.light_blue
     puts '4 - Create a book'.light_blue
     puts '5 - Create a rental'.light_blue
     puts '6 - List all rentals for a given person id'.blue
-    puts "7 - Exit".red
+    puts '7 - Exit'.red
     puts
 
-    print 'Option: '
+    print 'Option: '.yellow
     input = gets.chomp.to_i
 
     case input
@@ -43,7 +37,7 @@ def main
       app.exit_app
     end
 
-  break if input == 7
+    break if input == 7
   end
 end
 
