@@ -54,4 +54,3 @@ class App
     puts 'app!'.pink
   end
 end
-

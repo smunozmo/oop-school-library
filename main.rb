@@ -2,6 +2,7 @@ require './app'
 
 puts 'Welcome to School Library App!'.yellow
 
+# rubocop:disable Metrics/CyclomaticComplexity
 def main
   app = App.new
 
@@ -16,10 +17,8 @@ def main
     puts '6 - List all rentals for a given person id'.blue
     puts '7 - Exit'.red
     puts
-
     print 'Option: '.yellow
     input = gets.chomp.to_i
-
     case input
     when 1
       app.list_books
@@ -40,5 +39,6 @@ def main
     break if input == 7
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
 
 main
