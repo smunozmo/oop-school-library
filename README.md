@@ -2,7 +2,14 @@
 
 > This is an OOP Ruby excercise for Microverse.
 
-👤 **Author**
+👤 **Authors**
+
+
+Alonso Falconi
+
+- GitHub - [@alonsofl](https://github.com/alonsofl)
+- Twitter - [@AlonsoFalconi](https://www.twitter.com/AlonsoFalconi)
+- LinkedIn - [Alonso Falconi](https://www.linkedin.com/in/alonsofalconi/)
 
 Sebastián Muñoz
 
