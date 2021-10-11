@@ -10,6 +10,7 @@ class App
     @rentals = []
     @books = []
     @lists = Lists.new
+    @creators = Creators.new
   end
 
   # def list_books
@@ -22,7 +23,11 @@ class App
   # end
 
   def list_books
-    @lists.show_list_books(@books)
+    @lists.books(@books)
+  end
+
+  def create_book
+    @creators.book(@books)
   end
 
   def list_people
@@ -135,25 +140,24 @@ class App
 end
 
 class Lists
-  def show_list_books(books)
+  def books(books)
     if books.length.zero?
       puts "\nThere are no books created!".green
     else
-      @books.each do |e|
-        puts "Title: \"#{e.title}\", Author #{e.author}".green
+      books.each do |e|
+        puts "Title: \"#{e.title}\", Author: #{e.author}".green
       end
     end
   end
 end
 
-class Creator
-    def create_book
+class Creators
+  def book(books)
     print "\nTitle: ".yellow
     title = gets.chomp
     print 'Author: '.yellow
     author = gets.chomp
-    @books << Book.new(title, author)
+    books << Book.new(title, author)
     print "\nSuccess!\n".green
-    run
   end
 end
