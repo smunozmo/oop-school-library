@@ -6,6 +6,7 @@ require_relative './rental'
 require_relative './student'
 require_relative './teacher'
 require_relative './colorize'
+require_relative './lists'
 
 class App
   def initialize
@@ -25,17 +26,19 @@ class App
     puts "7 - Exit\n".red
     entry = gets.chomp
     select(entry.to_i)
-  end
+end
 
-  def list_books
-    @books.each_with_index do |_e, idx|
-      print "\nTitle: '#{@books[idx].title}', Author #{@books[idx].author}".green
-    end
-    print "\n"
-    run
-  end
+def create_book
+  print "\nTitle: ".yellow
+  title = gets.chomp
+  print 'Author: '.yellow
+  author = gets.chomp
+  @books << Book.new(title, author)
+  print "\nSuccess!\n".green
+  run
+end
 
-  def list_people
+def list_people
     @people.each_with_index do |_e, idx|
       print "\n[#{@people[idx].class}] ".yellow
       print "Name: '#{@people[idx].name}', ID: #{@people[idx].id}, Age: #{@people[idx].age}".green
@@ -78,15 +81,6 @@ class App
     run
   end
 
-  def create_book
-    print "\nTitle: ".yellow
-    title = gets.chomp
-    print 'Author: '.yellow
-    author = gets.chomp
-    @books << Book.new(title, author)
-    print "\nSuccess!\n".green
-    run
-  end
 
   def create_rental
     puts "\nSelect a book from the following list by number: \n".yellow
