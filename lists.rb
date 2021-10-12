@@ -4,7 +4,7 @@ class Lists
       puts "\nThere are no books created!".green
     else
       books.each do |e|
-        puts "Title: \"#{e.title}\", Author: #{e.author}".green
+        puts "Title: \"#{e["title"]}\", Author: #{e["author"]}".green
       end
     end
   end

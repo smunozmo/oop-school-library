@@ -9,12 +9,10 @@ require 'json'
 
 class App
   def initialize
-    file_data = File.read("test-data.json")
-    file_parse = JSON.parse(file_data)
-    p file_parse
+    books_data = File.read('books.json')
     @people = []
     @rentals = []
-    @books = []
+    @books = JSON.parse(books_data)
     @lists = Lists.new
     @creators = Creators.new
   end
@@ -44,15 +42,15 @@ class App
   end
 
   def save_data
-    books_object = {}
-    @books.each_with_index do |e, idx| 
-      books_object[idx] = {'title' => e.title, 'author' => e.author}
-    end
-    json_books = books_object.to_json
-    File.write('./test-data.json', json_books)
+    File.write('books.json', JSON.generate(@books))
+
     print "\nData stored suceessfully.".green
   end
 
+  def load_data
+    file_data = File.read("test-data.json")
+    @books.each { |e| p e }
+  end
 
   def exit_app
     save_data

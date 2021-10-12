@@ -4,7 +4,8 @@ class Creators
     title = gets.chomp
     print 'Author: '.yellow
     author = gets.chomp
-    books << Book.new(title, author)
+    temp_book = Book.new(title, author)
+    books.push({'title' => temp_book.title, 'author' => temp_book.author})
     print "\nSuccess!\n".green
   end
 
