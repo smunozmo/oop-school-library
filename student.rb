@@ -1,10 +1,12 @@
 require_relative './person'
 
 class Student < Person
+  attr_reader :parent_permission
+
   def initialize(age, name, permission, classroom: nil)
     super(age, name, parent_permission: true)
     @parent_permission = case permission
-                         when 'Y'
+                         when 'y', 'Y'
                            true
                          else
                            false

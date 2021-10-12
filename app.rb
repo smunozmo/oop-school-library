@@ -10,7 +10,8 @@ require 'json'
 class App
   def initialize
     books_data = File.read('books.json')
-    @people = []
+    people_data = File.read('people.json')
+    @people = JSON.parse(people_data)
     @rentals = []
     @books = JSON.parse(books_data)
     @lists = Lists.new
@@ -43,6 +44,7 @@ class App
 
   def save_data
     File.write('books.json', JSON.generate(@books))
+    File.write('people.json', JSON.generate(@people))
 
     print "\nData stored suceessfully.".green
   end

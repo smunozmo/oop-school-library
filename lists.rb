@@ -14,8 +14,8 @@ class Lists
       puts "\nThere are no people created!".green
     else
       people.each do |e|
-        print "[#{e.class}] ".yellow
-        puts "Name: #{e.name}, ID: #{e.id}, Age: #{e.age}".green
+        print "[#{e['class']}] ".yellow
+        puts "Name: #{e['name']}, ID: #{e['id']}, Age: #{e['age']}".green
       end
     end
   end

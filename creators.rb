@@ -4,8 +4,8 @@ class Creators
     title = gets.chomp
     print 'Author: '.yellow
     author = gets.chomp
-    temp_book = Book.new(title, author)
-    books.push({'title' => temp_book.title, 'author' => temp_book.author})
+    book_obj = Book.new(title, author)
+    books.push({'title' => book_obj.title, 'author' => book_obj.author})
     print "\nSuccess!\n".green
   end
 
@@ -16,7 +16,8 @@ class Creators
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '.yellow
     parent_permission = gets.chomp
-    people << Student.new(age, name, parent_permission)
+    people_obj = Student.new(age, name, parent_permission)
+    people.push({'age' => people_obj.age, 'name' => people_obj.name, 'parent_permission' => people_obj.parent_permission, 'id' => people_obj.id, 'class' => people_obj.class})
     print "\nSuccess!\n".green
   end
 
@@ -27,7 +28,8 @@ class Creators
     name = gets.chomp
     print 'Specialization: '.yellow
     specialization = gets.chomp
-    people << Teacher.new(age, name, specialization)
+    people_obj = Teacher.new(age, name, specialization)
+    people.push({'age' => people_obj.age, 'name' => people_obj.name, 'specialization' => people_obj.specialization, 'id' => people_obj.id, 'class' => people_obj.class})
     print "\nSuccess!\n".green
   end
 
