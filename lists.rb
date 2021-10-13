@@ -4,7 +4,7 @@ class Lists
       puts "\nThere are no books created!".green
     else
       books.each do |e|
-        puts "Title: \"#{e.title}\", Author: #{e.author}".green
+        puts "Title: \"#{e['title']}\", Author: #{e['author']}".green
       end
     end
   end
@@ -14,23 +14,29 @@ class Lists
       puts "\nThere are no people created!".green
     else
       people.each do |e|
-        print "[#{e.class}] ".yellow
-        puts "Name: #{e.name}, ID: #{e.id}, Age: #{e.age}".green
+        print "[#{e['class']}] ".yellow
+        puts "Name: #{e['name']}, ID: #{e['id']}, Age: #{e['age']}".green
       end
     end
   end
 
-  def rental(people)
-    print "\nID of person: ".yellow
-    id = gets.chomp.to_i
-    people.each_with_index do |_e, idx|
-      next unless id == people[idx].id
-
-      person = people[idx].rentals
-      puts "\nRentals:".yellow
-      puts "\n"
-      person.each_with_index do |_e, index|
-        puts "Date: #{person[index].date}, Book: '#{person[index].book.title}' by #{person[index].book.author}".green
+  def rental(rentals)
+    print "\nID of person: \n".yellow
+    person_id = gets.chomp.to_i
+    person_found = false
+    person_selected = []
+    rentals.each do |e|
+      if e['id'].to_i == person_id
+        person_found = true
+        person_selected.push(e)
+      end
+    end
+    puts
+    if person_found == false
+      puts 'ID does not exist!'.red
+    else
+      person_selected.each do |e|
+        puts "Date: #{e['date']}, Book \"#{e['title']}\" by #{e['author']}".green
       end
     end
   end

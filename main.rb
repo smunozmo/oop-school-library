@@ -1,6 +1,6 @@
 require './app'
 
-puts 'Welcome to School Library App!'.yellow
+puts "\nWelcome to School Library App!".yellow
 
 # rubocop:disable Metrics/CyclomaticComplexity
 def main

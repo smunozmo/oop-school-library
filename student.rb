@@ -4,7 +4,7 @@ class Student < Person
   def initialize(age, name, permission, classroom: nil)
     super(age, name, parent_permission: true)
     @parent_permission = case permission
-                         when 'Y'
+                         when 'y', 'Y'
                            true
                          else
                            false
@@ -12,7 +12,7 @@ class Student < Person
     @classroom = classroom
   end
 
-  attr_reader :classroom
+  attr_reader :classroom, :parent_permission
 
   def classroom=(classroom)
     @classroom = classroom
