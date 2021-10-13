@@ -53,5 +53,11 @@ describe 'Solver class' do
       fizzbuzz = solver.fizzbuzz(15)
       expect(fizzbuzz).to eq 'fizzbuzz'
     end
+
+    it 'Should return the number 7 as a string' do
+      solver = Solver.new
+      fizzbuzz = solver.fizzbuzz(7)
+      expect(fizzbuzz).to eq '7'
+    end
   end
 end
