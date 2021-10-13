@@ -41,23 +41,18 @@ class App
   def save_data
     File.write('books.json', JSON.generate(@books))
     File.write('people.json', JSON.generate(@people))
+    File.write('rentals.json', JSON.generate(@rentals))
 
-    print "\nData stored suceessfully.".green
+    puts "\nData stored suceessfully.".green
   end
 
   def load_data
-    unless File.exists?('books.json')
-      File.write('books.json', '[]')
-    end
+    File.write('books.json', '[]') unless File.exist?('books.json')
     books_data = File.read('books.json')
 
-    unless File.exists?('people.json')
-      File.write('people.json', '[]')
-    end
+    File.write('people.json', '[]') unless File.exist?('people.json')
     people_data = File.read('people.json')
-    unless File.exists?('rentals.json')
-      File.write('rentals.json', '[]')
-    end
+    File.write('rentals.json', '[]') unless File.exist?('rentals.json')
     rentals_data = File.read('rentals.json')
 
     @people = JSON.parse(people_data)

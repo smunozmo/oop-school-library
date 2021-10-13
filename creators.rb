@@ -46,16 +46,16 @@ class Creators
 
   def rental(books, people, rentals)
     puts "\nSelect a book from the following list by number: \n".yellow
-    books.each_with_index do |_e, idx|
+    books.each_with_index do |e, idx|
       print "#{idx}) ".yellow
-      print "Title: '#{_e['title']}, Author #{_e['author']}\n".green
+      print "Title: '#{e['title']}, Author #{e['author']}\n".green
     end
     book_number = gets.chomp.to_i
     book_list = books[book_number]
     puts "\nSelect a person from the following list by number (not ID): \n".yellow
-    people.each_with_index do |_e, ix|
+    people.each_with_index do |e, ix|
       print "#{ix}) ".yellow
-      print "[#{_e['class']}] Name:'#{_e['name']}', ID:#{_e['id']}, Age:#{_e['age']} \n".green
+      print "[#{e['class']}] Name:'#{e['name']}', ID:#{e['id']}, Age:#{e['age']} \n".green
     end
     person_number = gets.chomp.to_i
     person_list = people[person_number]
