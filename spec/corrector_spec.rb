@@ -15,9 +15,9 @@ describe 'Corrector class' do
     end
 
     it 'Should not change name if correct' do
-        corrector = Corrector.new
-        name = corrector.correct_name('Joe')
-        expect(name).to eq 'Joe'
-      end
+      corrector = Corrector.new
+      name = corrector.correct_name('Joe')
+      expect(name).to eq 'Joe'
+    end
   end
 end

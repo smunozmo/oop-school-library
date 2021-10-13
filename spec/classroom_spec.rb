@@ -13,9 +13,9 @@ describe 'Classroom class' do
     end
 
     it 'Should return student' do
-        classroom = Classroom.new 'Spanish'
-        classroom.add_student('Mock Student')
-        expect(classroom.students).to eq ['Mock Student']
+      classroom = Classroom.new 'Spanish'
+      classroom.add_student('Mock Student')
+      expect(classroom.students).to eq ['Mock Student']
     end
   end
 end

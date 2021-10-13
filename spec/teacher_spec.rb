@@ -13,8 +13,8 @@ describe 'Teacher class' do
     end
 
     it 'Should return true' do
-        teacher = Teacher.new 30, 'Sam', 'Math'
-        expect(teacher.can_use_services?).to be true
+      teacher = Teacher.new 30, 'Sam', 'Math'
+      expect(teacher.can_use_services?).to be true
     end
   end
 end
