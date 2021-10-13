@@ -34,4 +34,24 @@ describe 'Solver class' do
       expect(reverse).not_to eq 'hello'
     end
   end
+
+  context 'Running fizzbuzz method' do
+    it 'Should return fizz' do
+      solver = Solver.new
+      fizzbuzz = solver.fizzbuzz(3)
+      expect(fizzbuzz).to eq 'fizz'
+    end
+
+    it 'Should return buzz' do
+      solver = Solver.new
+      fizzbuzz = solver.fizzbuzz(5)
+      expect(fizzbuzz).to eq 'buzz'
+    end
+
+    it 'Should return fizzbuzz' do
+      solver = Solver.new
+      fizzbuzz = solver.fizzbuzz(15)
+      expect(fizzbuzz).to eq 'fizzbuzz'
+    end
+  end
 end
