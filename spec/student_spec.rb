@@ -13,8 +13,8 @@ describe 'Student class' do
     end
 
     it 'Should return ¯\(ツ)/¯' do
-        student = Student.new 17, 'Joe', true
-        expect(student.play_hooky).to eq "¯\(ツ)/¯"
+      student = Student.new 17, 'Joe', true
+      expect(student.play_hooky).to eq "¯\(ツ)/¯"
     end
   end
 end
