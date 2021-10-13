@@ -1,4 +1,5 @@
 class Solver
-    def factorial
+    def factorial(num)
+        (1..num).inject(:*) || 0
     end
 end
