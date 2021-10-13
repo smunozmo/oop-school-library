@@ -27,5 +27,11 @@ describe 'Solver class' do
       reverse = solver.reverse('hello')
       expect(reverse).to eq 'olleh'
     end
+
+    it 'Should not return "hello"' do
+      solver = Solver.new
+      reverse = solver.reverse('hello')
+      expect(reverse).not_to eq 'hello'
+    end
   end
 end
