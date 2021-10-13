@@ -8,4 +8,4 @@ p ruby
 
 stringi = JSON.generate(ruby)
 
-p stringi 
+p stringi

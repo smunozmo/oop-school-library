@@ -5,7 +5,7 @@ class Creators
     print 'Author: '.yellow
     author = gets.chomp
     book_obj = Book.new(title, author)
-    books.push({'title' => book_obj.title, 'author' => book_obj.author})
+    books.push({ 'title' => book_obj.title, 'author' => book_obj.author })
     print "\nSuccess!\n".green
   end
 
@@ -17,7 +17,7 @@ class Creators
     print 'Has parent permission? [Y/N]: '.yellow
     parent_permission = gets.chomp
     people_obj = Student.new(age, name, parent_permission)
-    people.push({'age' => people_obj.age, 'name' => people_obj.name, 'parent_permission' => people_obj.parent_permission, 'id' => people_obj.id, 'class' => people_obj.class})
+    people.push({ 'age' => people_obj.age, 'name' => people_obj.name, 'parent_permission' => people_obj.parent_permission, 'id' => people_obj.id, 'class' => people_obj.class })
     print "\nSuccess!\n".green
   end
 
@@ -29,7 +29,7 @@ class Creators
     print 'Specialization: '.yellow
     specialization = gets.chomp
     people_obj = Teacher.new(age, name, specialization)
-    people.push({'age' => people_obj.age, 'name' => people_obj.name, 'specialization' => people_obj.specialization, 'id' => people_obj.id, 'class' => people_obj.class})
+    people.push({ 'age' => people_obj.age, 'name' => people_obj.name, 'specialization' => people_obj.specialization, 'id' => people_obj.id, 'class' => people_obj.class })
     print "\nSuccess!\n".green
   end
 
@@ -44,24 +44,25 @@ class Creators
     end
   end
 
-  def rental(books, people)
+  def rental(books, people, rentals)
     puts "\nSelect a book from the following list by number: \n".yellow
     books.each_with_index do |_e, idx|
       print "#{idx}) ".yellow
-      print "Title: '#{books[idx].title}', Author #{books[idx].author}\n".green
+      print "Title: '#{_e['title']}, Author #{_e['author']}\n".green
     end
     book_number = gets.chomp.to_i
     book_list = books[book_number]
     puts "\nSelect a person from the following list by number (not ID): \n".yellow
     people.each_with_index do |_e, ix|
       print "#{ix}) ".yellow
-      print "[#{people[ix].class}] Name:'#{people[ix].name}', ID:#{people[ix].id}, Age:#{people[ix].age} \n".green
+      print "[#{_e['class']}] Name:'#{_e['name']}', ID:#{_e['id']}, Age:#{_e['age']} \n".green
     end
     person_number = gets.chomp.to_i
     person_list = people[person_number]
     print "\nDate: ".yellow
     date = gets.chomp
-    Rental.new(date, book_list, person_list)
+    rentals_obj = Rental.new(date, book_list, person_list)
+    rentals.push({ 'date' => rentals_obj.date, 'id' => rentals_obj.person['id'], 'title' => rentals_obj.book['title'], 'author' => rentals_obj.book['author'] })
     print "\nSuccess!\n".green
   end
 end

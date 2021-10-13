@@ -9,11 +9,7 @@ require 'json'
 
 class App
   def initialize
-    books_data = File.read('books.json')
-    people_data = File.read('people.json')
-    @people = JSON.parse(people_data)
-    @rentals = []
-    @books = JSON.parse(books_data)
+    load_data
     @lists = Lists.new
     @creators = Creators.new
   end
@@ -35,11 +31,11 @@ class App
   end
 
   def create_rental
-    @creators.rental(@books, @people)
+    @creators.rental(@books, @people, @rentals)
   end
 
   def display_rentals_by_id
-    @lists.rental(@people)
+    @lists.rental(@rentals)
   end
 
   def save_data
@@ -50,8 +46,23 @@ class App
   end
 
   def load_data
-    file_data = File.read("test-data.json")
-    @books.each { |e| p e }
+    unless File.exists?('books.json')
+      File.write('books.json', '[]')
+    end
+    books_data = File.read('books.json')
+
+    unless File.exists?('people.json')
+      File.write('people.json', '[]')
+    end
+    people_data = File.read('people.json')
+    unless File.exists?('rentals.json')
+      File.write('rentals.json', '[]')
+    end
+    rentals_data = File.read('rentals.json')
+
+    @people = JSON.parse(people_data)
+    @books = JSON.parse(books_data)
+    @rentals = JSON.parse(rentals_data)
   end
 
   def exit_app
