@@ -6,4 +6,7 @@ class Solver
         (1..num).inject(:*) || 0
         end
     end
+
+    def reverse
+    end
 end
