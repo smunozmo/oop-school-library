@@ -12,6 +12,12 @@ describe 'Solver class' do
         solver = Solver.new
         result = solver.factorial(0)
         expect(result).to eq 0
-      end
+    end
+
+    it 'Should resturn erros' do
+        solver = Solver.new
+        result = solver.factorial(-5)
+        expect(result).to eq "Math Error"
+    end
   end
 end
