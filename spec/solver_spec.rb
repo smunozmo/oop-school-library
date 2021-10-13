@@ -20,4 +20,12 @@ describe 'Solver class' do
         expect(result).to eq "Math Error"
     end
   end
+
+  context 'Running reverse method' do
+    it 'Should return "olleh"' do
+      solver = Solver.new
+      reverse = solver.reverse('hello')
+      expect(reverse).to eq 'olleh'
+    end
+  end
 end
